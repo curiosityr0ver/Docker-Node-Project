@@ -25,6 +25,17 @@ app.get('/health', (req, res) => {
     });
 });
 
+app.get('/error', (req, res) => {
+    // Simulate an error
+    res.status(500).json({
+        error: 'Internal Server Error',
+        message: 'Something went wrong!',
+        timestamp: new Date().toISOString(),
+        status: 'error',
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
